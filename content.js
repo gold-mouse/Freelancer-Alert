@@ -1,5 +1,5 @@
-const TELEGRAM_BOT_TOKEN = '7997762459:AAFPhijrMOLG9uebOl4vxlAN38w-Pxm7BUY';
-const TELEGRAM_CHAT_ID = '7604931917';
+const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN';
+const TELEGRAM_CHAT_ID = 'YOUR_CHATID';
 let lastNotificationTime = 3000;
 
 async function sendTelegramMessage(message) {
