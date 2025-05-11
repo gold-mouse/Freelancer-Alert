@@ -40,13 +40,14 @@ function observeForNotification() {
 
     let newTask = document.querySelector("fl-floating-action[fltrackinglabel='NewProjectsNotification']");
     let newMsg = document.querySelector("fl-button.NavigationItemBtn fl-unread-indicator[label='Unread messages']")
+    const delay = 3000 + Math.random() * 2000; // 3 to 5 seconds
     if (newMsg) {
+      await sleep(delay)
       newMsgCount = Number(newMsg.innerText)
       if (oldMsgCount === newMsgCount) return
       sendTelegramMessage("** New Message!!! **")
       oldMsgCount = newMsgCount
     } else if (newTask) {
-      const delay = 3000 + Math.random() * 2000; // 3 to 5 seconds
       await sleep(delay)
       newTask.click();
       await sleep(4000)
