@@ -53,11 +53,17 @@ function observeForNotification() {
       newTask.click();
       await sleep(4000)
       try {
+        moreBtn = document.querySelector("fl-project-contest-card button.ReadMoreButton")
+        if (moreBtn) {
+          moreBtn.click()
+          await sleep(2)
+        }
         title = document.querySelector("fl-project-contest-card fl-heading").innerText
         budget = document.querySelector("fl-project-contest-card fl-text").innerText
         contents = document.querySelector("fl-project-contest-card > fl-text[data-type='paragraph']").innerText
         sendTelegramMessage(`** New Task **\n${title}\n${budget}\n${contents}`);
       } catch (e) {
+        sendTelegramMessage("Error occurred\n" + e.message);
         console.error(e)
       }
     }
