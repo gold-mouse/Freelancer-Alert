@@ -49,7 +49,7 @@ function observeForNotification() {
       sendTelegramMessage("** New Message!!! **")
     }
     if (newTask) {
-      await sleep(delay)
+      if (!newMsg) await sleep(delay)
       newTask.click();
       await sleep(4000)
       try {
