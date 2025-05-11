@@ -61,7 +61,7 @@ function observeForNotification() {
         title = document.querySelector("fl-project-contest-card fl-heading").innerText
         budget = document.querySelector("fl-project-contest-card fl-text").innerText
         contents = document.querySelector("fl-project-contest-card > fl-text[data-type='paragraph']").innerText
-        sendTelegramMessage(`** New Task **\n${title}\n${budget}\n${contents}`);
+        sendTelegramMessage(`** New Task **\n${title}\n${budget}\n\n${contents}`);
       } catch (e) {
         sendTelegramMessage("Error occurred\n" + e.message);
         console.error(e)
