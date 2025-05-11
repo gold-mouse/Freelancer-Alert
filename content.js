@@ -1,6 +1,7 @@
 const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN';
 const TELEGRAM_CHAT_ID = 'YOUR_CHATID';
 let lastNotificationTime = 0;
+var oldMsgCount = 0
 
 async function sendTelegramMessage(message) {
   try {
@@ -40,7 +41,10 @@ function observeForNotification() {
     let newTask = document.querySelector("fl-floating-action[fltrackinglabel='NewProjectsNotification']");
     let newMsg = document.querySelector("fl-button.NavigationItemBtn fl-unread-indicator[label='Unread messages']")
     if (newMsg) {
+      newMsgCount = Number(newMsg.innerText)
+      if (oldMsgCount === newMsgCount) return
       sendTelegramMessage("** New Message!!! **")
+      oldMsgCount = newMsgCount
     } else if (newTask) {
       const delay = 3000 + Math.random() * 2000; // 3 to 5 seconds
       await sleep(delay)
