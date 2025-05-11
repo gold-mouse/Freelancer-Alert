@@ -47,7 +47,8 @@ function observeForNotification() {
       if (oldMsgCount === newMsgCount) return
       oldMsgCount = newMsgCount
       sendTelegramMessage("** New Message!!! **")
-    } else if (newTask) {
+    }
+    if (newTask) {
       await sleep(delay)
       newTask.click();
       await sleep(4000)
