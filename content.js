@@ -12,7 +12,7 @@ async function sendTelegramMessage(message) {
       },
       body: JSON.stringify({
         chat_id: TELEGRAM_CHAT_ID,
-        text: message
+        text: message + "\n\nNew Messages: " + oldMsgCount
       })
     });
 
