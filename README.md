@@ -1,33 +1,63 @@
-# Freelancer New Project Notifier
+# Freelancer New Project Notifier 🚀
 
-A lightweight Chrome extension that monitors Freelancer.com for new project postings or messages and sends real-time alerts via Telegram.
+This Chrome Extension monitors Freelancer.com for new project notifications and unread messages — and sends them to your Telegram bot.
 
 ## 📦 Features
 
-- 🧠 Detects new projects and unread messages on Freelancer.com
-- 📲 Sends notifications to a Telegram chat via bot integration
-- ⏱ Introduces randomized delay to mimic natural behavior
-- 🔐 Operates with minimal permissions for security
+- 🔔 Detects new projects and messages on Freelancer.com
+- 📤 Sends real-time notifications to Telegram
+- 💾 User-configurable Bot Token and Chat ID via popup UI
+- 🌙 Automatically Dark/Light mode toggle based on System
+- ♻️ Reset button to clear settings
+- 🔄 Automatically refreshes content script when config is saved
 
-## 🚀 How It Works
+---
 
-1. Injects a content script (`content.js`) into Freelancer.com pages
-2. Uses a MutationObserver to monitor for:
-   - New messages
-   - New project cards
-3. Sends a formatted notification to a predefined Telegram chat using a bot
-
-## 🛠 Installation
+## 🧪 Local Installation
 
 1. Clone or download this repository.
-2. Go to `chrome://extensions/` in your browser.
-3. Enable "Developer mode" (top right).
-4. Click "Load unpacked" and select the folder containing the manifest and script.
+2. Open Chrome and go to `chrome://extensions`
+3. Enable **Developer mode**
+4. Click **"Load unpacked"**
+5. Select the folder with the extension files
 
-## 🧾 Configuration
+---
 
-To use the Telegram notification feature, update the following constants in `content.js`:
+## 🧾 How to Use
 
-```js
-const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN';
-const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID';
+1. Click the extension icon in Chrome.
+2. Enter your **Telegram Bot Token** and **Chat ID**.
+3. Click **Save**. ✅
+4. The extension will begin monitoring for updates.
+
+> Note: It works on [https://www.freelancer.com/search/projects](https://www.freelancer.com/search/projects) only
+
+---
+
+## 🛡️ Permissions Used
+
+- `storage`: To save user settings (token, chat ID, theme)
+- `activeTab`: To observe Freelancer page mutations
+- `scripting`: To inject code if needed
+- `host_permissions`: `https://www.freelancer.com/*`
+
+---
+
+## 🧠 Built With
+
+- Vanilla JS
+- Chrome Manifest V3
+- Telegram Bot API
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first.
+
+---
+
+## 📄 License
+
+[MIT](LICENSE)
+
