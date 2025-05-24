@@ -7,7 +7,12 @@
   "host_permissions": ["https://www.freelancer.com/*"],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Set Telegram Info"
+    "default_title": "Freelancer Notifier",
+    "default_icon": {
+      "16": "icons/icon.png",
+      "48": "icons/icon.png",
+      "128": "icons/icon.png"
+    }
   },
   "content_scripts": [
     {
