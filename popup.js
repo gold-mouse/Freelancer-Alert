@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
       errorMsg.style.display = 'none';
       successMsg.style.display = 'block';
 
+      chrome.runtime.sendMessage({ type: 'telegramConfigUpdated' });
+
       setTimeout(() => {
         window.close();
       }, 500);
