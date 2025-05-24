@@ -1,7 +1,19 @@
-const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN';
-const TELEGRAM_CHAT_ID = 'YOUR_CHATID';
+var TELEGRAM_BOT_TOKEN = '';
+var TELEGRAM_CHAT_ID = '';
 let lastNotificationTime = 0;
 var oldMsgCount = 0
+
+chrome.storage.local.get(['botToken', 'chatId'], (result) => {
+  TELEGRAM_BOT_TOKEN = result.botToken;
+  TELEGRAM_CHAT_ID = result.chatId;
+
+  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+    console.error("Telegram credentials are not set.");
+    return;
+  }
+
+  observeForNotification();  // Start only after loading the credentials
+});
 
 async function sendTelegramMessage(message) {
   try {

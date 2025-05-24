@@ -1,24 +1,19 @@
 {
-    "manifest_version": 3,
-    "name": "Freelancer New Project Notifier",
-    "version": "1.0",
-    "description": "Notifies via Telegram when new projects appear on Freelancer.",
-    "permissions": [
-        "scripting",
-        "activeTab"
-    ],
-    "host_permissions": [
-        "https://www.freelancer.com/*"
-    ],
-    "content_scripts": [
-        {
-            "matches": [
-                "https://www.freelancer.com/*"
-            ],
-            "js": [
-                "content.js"
-            ],
-            "run_at": "document_idle"
-        }
-    ]
+  "manifest_version": 3,
+  "name": "Freelancer New Project Notifier",
+  "version": "1.1",
+  "description": "Notifies via Telegram when new projects appear on Freelancer.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["https://www.freelancer.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Set Telegram Info"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.freelancer.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
 }
