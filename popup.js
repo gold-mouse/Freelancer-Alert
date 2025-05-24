@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setTimeout(() => {
         window.close();
-      }, 800);
+      }, 500);
     });
   });
 
