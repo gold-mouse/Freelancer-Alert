@@ -3,30 +3,15 @@ var TELEGRAM_CHAT_ID = '';
 let lastNotificationTime = 0;
 var oldMsgCount = 0
 
-// Initial load
-loadCredentialsAndObserve();
+window.addEventListener('message', function (event) {
+    if (event.source !== window) return;
 
-// Reload credentials on config update
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.type === 'telegramConfigUpdated') {
-        console.log("Telegram config updated. Reloading credentials...");
-        loadCredentialsAndObserve();
+    if (event.data.type === 'FROM_EXTENSION') {
+        const credentials = event.data.credentials;
+        TELEGRAM_BOT_TOKEN = credentials.botToken;
+        TELEGRAM_CHAT_ID = credentials.chatId;
     }
 });
-
-function loadCredentialsAndObserve() {
-    chrome.storage.sync.get(['botToken', 'chatId'], (result) => {
-        TELEGRAM_BOT_TOKEN = result.botToken;
-        TELEGRAM_CHAT_ID = result.chatId;
-
-        if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-            console.warn("Telegram credentials not set.");
-            return;
-        }
-
-        observeForNotification();  // Start observer
-    });
-}
 
 async function sendTelegramMessage(message) {
     try {
@@ -66,7 +51,6 @@ function observeForNotification() {
                     raw = raw.slice(1);
                 }
                 const data = JSON.parse(JSON.parse(raw)[0]);
-                console.log(typeof data, data);
                 if (data?.body?.type === "project") {
                     const jobString = data.body.data.jobString || "New Project";
 
