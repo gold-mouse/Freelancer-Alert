@@ -1,24 +1,44 @@
 {
-  "manifest_version": 3,
-  "name": "Freelancer New Project Notifier",
-  "version": "1.1",
-  "description": "Notifies via Telegram when new projects appear on Freelancer.",
-  "permissions": ["storage", "scripting", "activeTab"],
-  "host_permissions": ["https://www.freelancer.com/*"],
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "Freelancer Notifier",
-    "default_icon": {
-      "16": "icons/icon.png",
-      "48": "icons/icon.png",
-      "128": "icons/icon.png"
-    }
-  },
-  "content_scripts": [
-    {
-      "matches": ["https://www.freelancer.com/*"],
-      "js": ["content.js"],
-      "run_at": "document_idle"
-    }
-  ]
+    "manifest_version": 3,
+    "name": "Freelancer New Project Notifier",
+    "version": "2.0",
+    "description": "Notifies via Telegram when new projects appear on Freelancer.",
+    "permissions": [
+        "storage",
+        "scripting",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "https://www.freelancer.com/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Freelancer Notifier",
+        "default_icon": {
+            "16": "icons/icon.png",
+            "48": "icons/icon.png",
+            "128": "icons/icon.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.freelancer.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "inject.js"
+            ],
+            "matches": [
+                "https://www.freelancer.com/*"
+            ]
+        }
+    ]
 }
